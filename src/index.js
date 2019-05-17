@@ -9,6 +9,7 @@ import toDoApp from './reducers';
 import App from './App';
 import { loadToDoList } from './actions';
 import rootSaga from './sagas';
+import { BrowserRouter } from 'react-router-dom';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(toDoApp, applyMiddleware(sagaMiddleware));
@@ -18,7 +19,9 @@ store.dispatch(loadToDoList());
 
 render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
